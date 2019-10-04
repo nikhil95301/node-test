@@ -8,4 +8,4 @@ user.name = 'Gounther'
 user.age =54
 
 const uerJSON = JSON.stringify(user)
-fs.writeFileSync('1json.json',uerJSON)
+fs.writeFileSync('1json.json',uerJSON) 

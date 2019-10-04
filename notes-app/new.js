@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const yargs = require('yargs')
-const Notes = require('./newn.js')
+const notes = require('./newn.js')
 
 //customize yargs version
 yargs.version('1.1.0')
@@ -22,14 +22,22 @@ body:{
 
     },
     handler:function(argv){
-     Notes.addNote(argv.title,argv.body)
+     notes.addNote(argv.title,argv.body)
     }
 })
 yargs.command({
     command:'remove',
-    describe:'removea note',
-    handler:function(){
+    describe:'remove a note',
+    builder:{
+        title:{
+describe:'Note title',
+demandOption:true,
+type:'string'
+        } 
+    },
+    handler:function(argv){
         console.log('removing the note')
+        notes.removeNote(argv.title)
     }
 })
 yargs.command({

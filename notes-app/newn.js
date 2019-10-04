@@ -2,6 +2,7 @@ const fs = require('fs')
 const getNotes = function(){
     return 'your notes...'
 }
+
 const addNote = function(title,body){
     const notes = loadNotes()
 const duplicateNotes = notes.filter(function(note){
@@ -20,6 +21,13 @@ console.log('new title taken')
 else {
     console.log('Note title taken')
 }
+}
+const removeNote= function(title){
+    const notes = loadNotes()
+    const notesToKeep = notes.filter(function(note){
+return note.title !== title
+    })
+    saveNotes(notesToKeep)
 }
 
 const saveNotes = function(notes){
@@ -41,5 +49,6 @@ return []
 }
 module.exports = {
     getNotes: getNotes,
-addNote:addNote
+addNote:addNote,
+removeNote:removeNote
 }
